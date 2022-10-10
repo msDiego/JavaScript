@@ -1,4 +1,4 @@
-
+ 
 var diferencia = 0.17;
 
 var peso = ParseFloat(prompt("Introduce tu peso"));
