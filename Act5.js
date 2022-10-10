@@ -18,3 +18,4 @@ if ( ++numero1 < numero2) {
     console.log("Incrementar en 1 unidad el valor de numero1 no lo hace mayor o igual que numero2");
 }
 
+
