@@ -1,5 +1,5 @@
-var numero1 = 5;
-var numero2 = 8;
+var numero1 = ParseInt(prompt("Introduce primer número"));
+var numero2 = ParseInt(prompt("Introduce segundo número"));
 
 
 if (numero1 <= numero2) {
