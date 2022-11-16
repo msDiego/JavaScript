@@ -5,7 +5,7 @@ const cyclist_team = {
     cyclists: [
         {
         name: "Juan Alonso",
-        born: "8/01/1958",
+        born: "08/01/1958",
         height: 1.92,
         tours: 0,
         wins: 12,
@@ -43,8 +43,12 @@ const cyclist_team = {
 }
 
 /*exercise01();
-exercise02(); */
+exercise02();
 exercise03();
+exercise04();
+exercise05(); */
+exercise06()
+
 
 function exercise01 (){
 
@@ -65,28 +69,86 @@ function exercise02 (){
     console.log("" + sortedNames.sort());
 }
 
-function exercise03 (){
+function exercise03 () {
 
     //saca la lista de los nombres ordenada por altura, de los más altos a los más bajos.
 
-    let cyclists = cyclist_team.cyclists.map( function (element){ return { name: element.name, height: element.height} });
+    cyclist_team.cyclists.sort((a,b) =>  b.height - a.height).forEach(function(element)
+    {console.log(element.height + " " + element.name)})
 
-    let heights = cyclists.map( function (element){ return element.height} ).sort( (a, b) => b - a );
 
-    let names = [];
+}
 
-    for (let i = 0; i < heights.length; i++){
+function exercise04 (){
 
-        cyclists.forEach (function (element) {
+    /* Ordena de peor a mejor, teniendo en
+    cuenta que el mejor ciclista es el que tiene más tours, y si empatan a tours, es mejor el
+    que tiene más wins. Imprime los nombres ordenados y también el número de tours y
+    de wins. */
 
-                if (element.height == heights[i]){
-                    names.push({name: element.name, height: heights[i]})
-                }
+    function sorted(a, b){
 
-            })
+        if (a.tours < b.tours){
+            return 1;
+        }
+        else if (a.tours === b.tours && a.wins < b.wins){
+            return 1;
+        }
+        else if (a.tours === b.tours && b.wins < a.wins){
+            return -1;
+        }
+        else{
+            return -1;
+        }
 
     }
 
-    console.log(names);
+    console.log( cyclist_team.cyclists.sort((a,b) => sorted(a,b) ))
 
 }
+
+function exercise05(){
+    //Utiliza map() para añadir un tour a todos los ciclistas.
+
+    let plusTour = cyclist_team.cyclists.map(function(e){ e.tours++; return e})
+
+    console.log(plusTour)
+}
+
+function exercise06(){
+
+    //Utiliza filter() para eliminar todos los ciclistas menores de 30 años
+
+    let age = new Date();
+    age.setUTCFullYear( age.getFullYear() - 30);
+
+    let oldersOnly = cyclist_team.cyclists.filter( function (e){
+
+        let dates = e.born.split("/");
+
+        let born = new Date(dates[2]+"-"+dates[1]+"-"+dates[0]);
+
+        let today = Date.now();
+
+        if (today - born.getTime() < age.getTime()){
+
+            return true;
+        }
+
+    })
+
+
+}
+
+function exercise07(){
+
+}
+
+function exercise08(){
+
+}
+
+function exercise09(){
+
+}
+
